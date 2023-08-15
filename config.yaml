@@ -1,0 +1,27 @@
+# # params for text detector
+# det_algorithm: "DB"
+# det_limit_side_len: 960
+# det_limit_type: "max"
+# det_file_path: "./onnx_models/model_det.onnx"
+
+# # DB parmas
+# det_db_thresh: 0.3
+# det_db_box_thresh: 0.6
+# det_db_unclip_ratio: 1.5
+# use_dilation: False
+# det_db_score_mode: "fast"
+
+# params for text recognition
+rec_file_path: "./weights/best_rec.onnx"
+rec_image_shape: '3, 48, 320'
+rec_batch_num: 6
+rec_algorithm: "SVTR_LCNet"
+postprocess_params : {
+            'name': 'CTCLabelDecode',
+            "character_dict_path": "japan_dict.txt",
+            "use_space_char": True
+        }
+drop_score: 0.5
+
+input_folder: "./images"
+output_folder: "./outputs"
